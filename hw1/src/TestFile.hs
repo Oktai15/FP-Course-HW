@@ -136,22 +136,24 @@ toListAns = mergeSortAns
 
 -- Tests for Foldable module
 splitOnTests :: [(Char, String)]
-splitOnTests = [('/', "my/path/to/file"), ('&', "my&abc&defg&"), ('/', "")]
+splitOnTests = [('/', "my/path/to/file"), ('&', "my&abc&defg&"), ('/', ""), ('/', "/")]
 
 splitOnAns :: [Fl.NonEmpty String]
 splitOnAns = [ "my" Fl.:| ["path","to","file"]
              , "my" Fl.:| ["abc","defg",""]
              , ""   Fl.:| []
+             , ""   Fl.:| [""]
              ]
 
 joinWithTests :: [(Char, Fl.NonEmpty String)]
 joinWithTests = [ ('/', "my" Fl.:| ["path", "to", "file"])
                 , ('&', "my" Fl.:| ["abc", "defg", ""])
                 , ('/', ""   Fl.:| [])
+                , ('/', ""   Fl.:| [""])
                 ]
 
 joinWithAns :: [String]
-joinWithAns = ["my/path/to/file", "my&abc&defg&", ""]
+joinWithAns = ["my/path/to/file", "my&abc&defg&", "", "/"]
 
 doTest :: (Show t, Show a, Eq a) => [t] -> [a] -> (t -> a) -> String
 doTest tests ans f = if isNothing numFail
