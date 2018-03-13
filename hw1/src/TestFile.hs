@@ -128,6 +128,9 @@ deleteElemAns = [ Aw.Node (5 :| [5,5]) (Aw.Node (2 :| [2]) Aw.Leaf Aw.Leaf)
                   (Aw.Node (8 :| []) Aw.Leaf Aw.Leaf)
                 ]
 -- Note: import Data.Foldable (toList)
+-- test: foldr (\a b -> b ++ show a) "" (Node (5::Int :| []) Leaf (Node (8::Int :| []) Leaf Leaf))
+-- ans:  "85"
+
 toListTests :: [Aw.Tree Int]
 toListTests = map Aw.fromList mergeSortTests
 

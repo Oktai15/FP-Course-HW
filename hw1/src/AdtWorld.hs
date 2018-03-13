@@ -71,6 +71,10 @@ instance Ord Nat where
 data Tree a = Leaf | Node (NonEmpty a) (Tree a) (Tree a) deriving (Show, Eq)
 
 instance Foldable Tree where
+    foldr :: (a -> b -> b) -> b -> Tree a -> b
+    foldr _ e Leaf             = e
+    foldr f e (Node l tr1 tr2) = foldr f (foldr f (foldr f e tr2) l) tr1
+
     foldMap :: Monoid m => (a -> m) -> Tree a -> m
     foldMap _ Leaf                    = mempty
     foldMap f (Node l tr1 tr2) = foldMap f tr1 `mappend` foldMap f l `mappend` foldMap f tr2

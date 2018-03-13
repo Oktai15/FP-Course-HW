@@ -16,7 +16,7 @@ extra-source-files:  ChangeLog.md
 cabal-version:       >=1.10
 
 library
-  exposed-modules:     TestFile Monoids AdtWorld Foldable
+  exposed-modules:     TestFile Foldable AdtWorld Monoids
   -- other-modules:
   -- other-extensions:
   build-depends:       base >=4.10 && <4.11
