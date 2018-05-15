@@ -1,0 +1,7 @@
+mut x = 5
+mut y = 9
+mut z = 0
+> z
+< x + z
+z = z + 5
+< z * 2
